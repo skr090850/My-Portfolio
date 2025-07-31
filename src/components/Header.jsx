@@ -51,7 +51,6 @@ const Header = () => {
                     ))}
                 </div>
 
-                {/* A placeholder for a mobile menu button. Functionality can be added here later. */}
                 <div className="md:hidden">
                     {/* Example: <button>Menu</button> */}
                 </div>
