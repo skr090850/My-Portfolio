@@ -5,7 +5,7 @@ const portfolioData = {
   name: "Suraj Kumar",
   title: "Full-Stack Developer (MERN) & Flutter Enthusiast",
   intro: "I build modern, responsive web and mobile applications, focusing on delivering high-quality solutions and contributing to product excellence in a growth-driven team.",
-  profileImage: "/profile-photo.jpg", // Make sure this path is correct in your `public` folder
+  profileImage: "/profile-photo.jpg",
 };
 
 const Home = () => {
