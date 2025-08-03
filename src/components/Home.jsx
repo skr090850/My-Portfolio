@@ -63,7 +63,7 @@ const Home = () => {
                             </span>
                         </h1>
                         
-                        <p className="text-xl md:text-3xl text-slate-700 dark:text-slate-50 mt-4 h-8 font-bold">
+                        <p className="text-xl md:text-3xl text-slate-50 mt-4 h-8 font-bold">
                             <span>{displayedTitle}</span>
                             <span className="border-l-2 border-slate-700 dark:border-slate-300 ml-1 animate-pulse"></span>
                         </p>
