@@ -1,63 +1,50 @@
 import React, { useState, useEffect } from 'react';
 import { useSettings } from '../contexts/SettingsContext';
 
+// --- Dynamic Titles for the typing effect ---
 const dynamicTitles = [
-    "Full-Stack Developer . . .",
-    "Flutter Developer . . .",
-    "MERN Stack Specialist . . .",
-    "AI Enthusiast . . ."
+    "Full-Stack Developer",
+    "Flutter Developer",
+    "MERN Stack Specialist",
+    "AI Enthusiast"
 ];
 
+// --- Main Home Component ---
 const Home = () => {
-    const { t } = useSettings(); // For language translations
+    const { t } = useSettings();
     const [titleIndex, setTitleIndex] = useState(0);
     const [displayedTitle, setDisplayedTitle] = useState('');
     const [isDeleting, setIsDeleting] = useState(false);
-    const [typingSpeed, setTypingSpeed] = useState(150); // ms per character
+    const [typingSpeed, setTypingSpeed] = useState(150);
 
     useEffect(() => {
         const handleTyping = () => {
             const currentTitle = dynamicTitles[titleIndex];
-            
-            // Logic for deleting text
             if (isDeleting) {
                 setDisplayedTitle(currentTitle.substring(0, displayedTitle.length - 1));
-                setTypingSpeed(20);
-            } 
-            // Logic for typing text
-            else {
+                setTypingSpeed(100);
+            } else {
                 setDisplayedTitle(currentTitle.substring(0, displayedTitle.length + 1));
-                setTypingSpeed(50);
+                setTypingSpeed(150);
             }
 
-            // When a title is fully typed out, pause, then start deleting
             if (!isDeleting && displayedTitle === currentTitle) {
                 setTimeout(() => setIsDeleting(true), 2000);
-            } 
-            // When a title is fully deleted, move to the next title and start typing
-            else if (isDeleting && displayedTitle === '') {
+            } else if (isDeleting && displayedTitle === '') {
                 setIsDeleting(false);
                 setTitleIndex((prevIndex) => (prevIndex + 1) % dynamicTitles.length);
             }
         };
 
-        // Set up the interval for the typing animation
         const timer = setTimeout(handleTyping, typingSpeed);
-
-        // Cleanup function to clear the timer when the component unmounts
         return () => clearTimeout(timer);
-
     }, [displayedTitle, isDeleting, titleIndex, typingSpeed]);
 
     return (
-        <section id="home" className="min-h-screen flex items-center justify-center bg-white dark:bg-slate-900 relative overflow-hidden">
-            {/* Background decorative elements */}
-            <div className="absolute top-1/4 left-1/4 w-72 h-72 md:w-96 md:h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse-slow"></div>
-            <div className="absolute bottom-1/4 right-1/4 w-72 h-72 md:w-96 md:h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse-slow animation-delay-2000"></div>
-
+        // This section is transparent to allow the global background to show through.
+        <section id="home" className="min-h-screen flex items-center justify-center bg-transparent">
             <div className="container mx-auto px-6 z-10">
                 <div className="flex flex-col md:flex-row items-center justify-between gap-12">
-                    {/* Left side: Text content */}
                     <div className="md:w-1/2 text-center md:text-left animate-fade-in-right">
                         <h1 className="text-4xl md:text-6xl font-bold text-slate-900 dark:text-white leading-tight">
                             {t('home_greeting')}{' '}
@@ -69,10 +56,9 @@ const Home = () => {
                             </span>
                         </h1>
                         
-                        {/* The dynamic title with a blinking cursor effect */}
-                        <p className="text-xl md:text-3xl text-slate-950 dark:text-slate-100 mt-4 h-8 font-bold">
+                        <p className="text-xl md:text-2xl text-slate-700 dark:text-slate-300 mt-4 h-8">
                             <span>{displayedTitle}</span>
-                            <span className="border-l-2 border-slate-700 dark:border-slate-300 animate-ping ml-1"></span>
+                            <span className="border-l-2 border-slate-700 dark:border-slate-300 ml-1 animate-pulse"></span>
                         </p>
                         
                         <p className="text-slate-600 dark:text-slate-400 mt-6 max-w-xl mx-auto md:mx-0">{t('home_intro')}</p>
@@ -85,16 +71,13 @@ const Home = () => {
                         </a>
                     </div>
                     
-                    {/* Right side: Profile picture */}
                     <div className="md:w-1/2 flex justify-center animate-fade-in-left">
-                        <div className="relative w-64 h-64 md:w-80 md:h-80">
-                            <div className="absolute inset-0 border-4 border-cyan-400 rounded-full animate-spin-slow"></div>
-                            <div className="absolute inset-2 border-2 border-purple-500 rounded-full animate-spin-slow-reverse"></div>
-                            
+                        <div className="relative w-64 h-64 md:w-80 md:h-80 group">
+                            <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-cyan-500 rounded-full blur opacity-60 group-hover:opacity-80 transition duration-1000 animate-pulse"></div>
                             <img 
                                 src="/profile-photo.jpg" 
                                 alt="Suraj Kumar" 
-                                className="w-full h-full object-cover rounded-full p-4"
+                                className="relative w-full h-full object-cover rounded-full p-1"
                                 onError={(e) => { e.target.onerror = null; e.target.src='https://placehold.co/400x400/1a202c/718096?text=Suraj'; }}
                             />
                         </div>

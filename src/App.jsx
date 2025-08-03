@@ -1,9 +1,7 @@
 import React from 'react';
-
-// Import the provider to manage theme and language
 import { SettingsProvider } from './contexts/SettingsContext';
-
-// Import all the section components
+import StarsCanvas from './components/Stars';
+import CursorGlow from './components/CursorGlow';
 import Header from './components/Header';
 import Home from './components/Home';
 import About from './components/About';
@@ -12,10 +10,9 @@ import Projects from './components/Projects';
 import Experience from './components/Experience';
 import Contact from './components/Contact';
 import Chatbot from './components/Chatbot';
-import CursorGlow from './components/CursorGlow';
 
 const Footer = () => (
-    <footer className="bg-white dark:bg-slate-900 py-6 border-t border-slate-200 dark:border-slate-800">
+    <footer className="bg-white/5 dark:bg-slate-900/5 py-6 border-t border-slate-200/10 dark:border-slate-800/10 transition-colors duration-300">
         <div className="container mx-auto px-6 text-center text-slate-500 dark:text-slate-400">
             <p>&copy; {new Date().getFullYear()} Suraj Kumar. All Rights Reserved.</p>
         </div>
@@ -24,20 +21,22 @@ const Footer = () => (
 
 function App() {
   return (
-    // The SettingsProvider makes theme and language available to all child components
     <SettingsProvider>
-      <div className="bg-white dark:bg-slate-900 text-slate-800 dark:text-white font-sans transition-colors duration-300">
+      <div className="relative">
+        <StarsCanvas />
         <CursorGlow />
-        <Header />
-        <main>
-          <Home />
-          <About />
-          <Skills />
-          <Projects />
-          <Experience />
-          <Contact />
-        </main>
-        <Footer />
+        <div className="relative z-0"> {/* Use z-0 or no z-index for content */}
+            <Header />
+            <main>
+              <Home />
+              <About />
+              <Skills />
+              <Projects />
+              <Experience />
+              <Contact />
+            </main>
+            <Footer />
+        </div>
         <Chatbot />
       </div>
     </SettingsProvider>

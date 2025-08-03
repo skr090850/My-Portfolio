@@ -4,11 +4,10 @@
 @import "tailwindcss";
 
 @layer base {
-  html {
-    scroll-behavior: smooth;
-  }
-  body {
-    @apply bg-slate-900; /* Default background */
+  html,
+  body,
+  #root {
+    @apply w-full h-full bg-slate-900; /* Ensures a base background color */
   }
 }
 

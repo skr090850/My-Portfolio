@@ -1,7 +1,6 @@
 import React from 'react';
 import { MdWork, MdSchool } from 'react-icons/md';
 
-// --- Component Data based on your resume ---
 const experienceData = [
   {
     type: 'work',
@@ -32,16 +31,13 @@ const educationData = [
   }
 ];
 
-// A reusable timeline item component
 const TimelineItem = ({ data }) => (
   <div className="relative pl-10 pb-10">
-    {/* The vertical line of the timeline */}
     <div className="absolute left-0 h-full w-0.5 bg-slate-700"></div>
-    {/* The icon on the timeline */}
     <div className="absolute left-[-18px] top-0 flex items-center justify-center w-10 h-10 rounded-full bg-slate-800 border-2 border-cyan-400 text-cyan-400">
       {data.icon}
     </div>
-    <div className="pl-4">
+    <div className="pl-4 p-6 rounded-lg bg-slate-800/20 backdrop-blur-sm border border-slate-700/50">
       <p className="text-sm text-cyan-300 mb-1">{data.date}</p>
       <h3 className="text-xl font-bold text-white">{data.title}</h3>
       <p className="text-md text-slate-400 mb-3">{data.subtitle}</p>
@@ -52,14 +48,12 @@ const TimelineItem = ({ data }) => (
 
 const Experience = () => {
   return (
-    <section id="experience" className="py-20 bg-slate-900">
+    <section id="experience" className="py-20 bg-transparent">
       <div className="container mx-auto px-6">
         <h2 className="text-4xl font-bold text-center text-white mb-16">
           My <span className="text-cyan-400">Journey</span>
         </h2>
-        
         <div className="grid md:grid-cols-2 gap-16">
-          {/* Work Experience Column */}
           <div>
             <h3 className="text-3xl font-bold text-white mb-8 text-center md:text-left">Work Experience</h3>
             <div className="relative">
@@ -68,8 +62,6 @@ const Experience = () => {
               ))}
             </div>
           </div>
-          
-          {/* Education Column */}
           <div>
             <h3 className="text-3xl font-bold text-white mb-8 text-center md:text-left">Education</h3>
             <div className="relative">
