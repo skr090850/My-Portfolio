@@ -47,7 +47,7 @@ const Header = () => {
                     ))}
                 </div>
                 <div className="relative">
-                    <button onClick={() => setSettingsOpen(!settingsOpen)} className="text-slate-800 dark:text-white hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors">
+                    <button onClick={() => setSettingsOpen(!settingsOpen)} className="text-slate-white hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors">
                         <FiSettings size={24} />
                     </button>
                     {settingsOpen && (
