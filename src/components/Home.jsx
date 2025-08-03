@@ -53,7 +53,7 @@ const Home = () => {
                         variants={slideIn("left", "tween", 0.2, 1)}
                         className="md:w-1/2 text-center md:text-left"
                     >
-                        <h1 className="text-4xl md:text-6xl font-bold text-white dark:text-white leading-tight">
+                        <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight">
                             {t('home_greeting')}{' '}
                             <span 
                                 className="text-cyan-500 dark:text-cyan-300" 
@@ -68,7 +68,7 @@ const Home = () => {
                             <span className="border-l-2 border-slate-700 dark:border-slate-300 ml-1 animate-pulse"></span>
                         </p>
                         
-                        <p className="text-slate-400 dark:text-slate-400 mt-6 max-w-xl mx-auto md:mx-0">{t('home_intro')}</p>
+                        <p className="text-slate-400 mt-6 max-w-xl mx-auto md:mx-0">{t('home_intro')}</p>
                         
                         <a 
                             href="#contact" 
