@@ -9,7 +9,7 @@ import { RiFileWordLine } from 'react-icons/ri';
 // Updated data with image paths. Replace these with your actual project screenshots.
 const projectsData = [
     {
-      image: "./public/pro-track.png",
+      image: "/pro-track.png",
       title: "Pro-Track (Job Portal)",
       description: "A role-based job portal for students, recruiters, and admins. I was responsible for backend development, creating REST APIs, authentication with JWT, file uploads, and email integration.",
       tech: ["React.js", "Node.js", "Express.js", "MongoDB", "JWT","Gemini API"],
@@ -17,7 +17,7 @@ const projectsData = [
       githubLink: "https://github.com/skr090850/Pro-Track-Job-Portal-"
     },
     {
-      image: "./public/vehicle-verified.jpg",
+      image: "/vehicle-verified.jpg",
       title: "Vehicle Verified",
       description: "A mobile app for managing and verifying vehicle documents with QR code support, built using Flutter and Firebase for a seamless, real-time experience.",
       tech: ["Flutter", "Firebase Auth", "Firestore", "Gemini API"],
@@ -26,7 +26,7 @@ const projectsData = [
 
     },
     {
-      image: "./public/hyperlocal-service-marketplace.png",
+      image: "/hyperlocal-service-marketplace.png",
       title: "Hyperlocal Service Marketplace",
       description: "ServiceHub is a user-friendly web platform that helps users search, book, and connect with trusted local professionals like plumbers, electricians, beauticians, and more for home services.",
       tech: ["React.js", "Node.js", "Express.js", "MongoDB", "JWT"],
