@@ -1,5 +1,8 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { FiGithub, FiLinkedin, FiMail } from 'react-icons/fi';
+import SectionWrapper from '../hoc/SectionWrapper';
+import { fadeIn } from '../utils/motion';
 
 const contactData = {
     email: "skr090850@gmail.com",
@@ -9,9 +12,12 @@ const contactData = {
 
 const Contact = () => {
     return (
-        <section id="contact" className="py-20 bg-transparent">
+        <div className="py-20 bg-transparent">
             <div className="container mx-auto px-6 text-center">
-                <div className="bg-slate-800/20 backdrop-blur-sm p-8 rounded-lg border border-slate-700/50 max-w-3xl mx-auto">
+                <motion.div 
+                    variants={fadeIn("up", "tween", 0.2, 1)}
+                    className="bg-slate-800/20 backdrop-blur-sm p-8 rounded-lg border border-slate-700/50 max-w-3xl mx-auto"
+                >
                     <h2 className="text-4xl font-bold text-white mb-4">Get In Touch</h2>
                     <p className="text-slate-400 max-w-2xl mx-auto mb-8">
                         I'm currently open to new opportunities and collaborations. My inbox is always open, whether you have a question or just want to say hi, I'll try my best to get back to you!
@@ -27,10 +33,10 @@ const Contact = () => {
                             <FiGithub size={32} />
                         </a>
                     </div>
-                </div>
+                </motion.div>
             </div>
-        </section>
+        </div>
     );
 };
 
-export default Contact;
+export default SectionWrapper(Contact, "contact");

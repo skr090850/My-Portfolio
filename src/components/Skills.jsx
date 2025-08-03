@@ -1,6 +1,9 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { FaReact, FaNodeJs, FaPython, FaFigma, FaGitAlt, FaJava, FaLinux } from 'react-icons/fa';
 import { SiMongodb, SiExpress, SiJavascript, SiFlutter, SiFirebase, SiCplusplus } from 'react-icons/si';
+import SectionWrapper from '../hoc/SectionWrapper';
+import { fadeIn } from '../utils/motion';
 
 const skillsData = [
     { name: "JavaScript", icon: <SiJavascript size={40} /> },
@@ -20,25 +23,28 @@ const skillsData = [
 
 const Skills = () => {
     return (
-        <section id="skills" className="py-20 bg-transparent">
+        <div className="py-20 bg-transparent">
             <div className="container mx-auto px-6">
-                <h2 className="text-4xl font-bold text-center text-white mb-12">
-                    Technical <span className="text-cyan-400">Skills</span>
-                </h2>
+                <motion.div variants={fadeIn("up", "tween", 0.2, 1)}>
+                    <h2 className="text-4xl font-bold text-center text-white mb-12">
+                        Technical <span className="text-cyan-400">Skills</span>
+                    </h2>
+                </motion.div>
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 max-w-5xl mx-auto">
                     {skillsData.map((skill, index) => (
-                        <div 
-                            key={index} 
+                        <motion.div 
+                            key={index}
+                            variants={fadeIn("up", "spring", index * 0.1, 0.75)}
                             className="bg-slate-800/40 backdrop-blur-sm p-6 rounded-lg flex flex-col items-center justify-center gap-4 text-center text-white border border-slate-700 hover:border-cyan-400 hover:bg-slate-700/60 transition-all duration-300 transform hover:-translate-y-2"
                         >
                             <div className="text-cyan-400">{skill.icon}</div>
                             <h3 className="font-semibold">{skill.name}</h3>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
             </div>
-        </section>
+        </div>
     );
 };
 
-export default Skills;
+export default SectionWrapper(Skills, "skills");

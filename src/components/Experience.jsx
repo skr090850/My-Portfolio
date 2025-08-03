@@ -1,5 +1,8 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { MdWork, MdSchool } from 'react-icons/md';
+import SectionWrapper from '../hoc/SectionWrapper';
+import { fadeIn } from '../utils/motion';
 
 const experienceData = [
   {
@@ -48,32 +51,34 @@ const TimelineItem = ({ data }) => (
 
 const Experience = () => {
   return (
-    <section id="experience" className="py-20 bg-transparent">
+    <div className="py-20 bg-transparent">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center text-white mb-16">
-          My <span className="text-cyan-400">Journey</span>
-        </h2>
+        <motion.div variants={fadeIn("up", "tween", 0.2, 1)}>
+            <h2 className="text-4xl font-bold text-center text-white mb-16">
+              My <span className="text-cyan-400">Journey</span>
+            </h2>
+        </motion.div>
         <div className="grid md:grid-cols-2 gap-16">
-          <div>
+          <motion.div variants={fadeIn("right", "tween", 0.3, 1)}>
             <h3 className="text-3xl font-bold text-white mb-8 text-center md:text-left">Work Experience</h3>
             <div className="relative">
               {experienceData.map((item, index) => (
                 <TimelineItem key={index} data={item} />
               ))}
             </div>
-          </div>
-          <div>
+          </motion.div>
+          <motion.div variants={fadeIn("left", "tween", 0.3, 1)}>
             <h3 className="text-3xl font-bold text-white mb-8 text-center md:text-left">Education</h3>
             <div className="relative">
               {educationData.map((item, index) => (
                 <TimelineItem key={index} data={item} />
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 
-export default Experience;
+export default SectionWrapper(Experience, "experience");

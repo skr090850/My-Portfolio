@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { useSettings } from '../contexts/SettingsContext';
+import SectionWrapper from '../hoc/SectionWrapper';
+import { slideIn } from '../utils/motion'; // Import the new animation utility
 
 // --- Dynamic Titles for the typing effect ---
 const dynamicTitles = [
@@ -41,15 +44,19 @@ const Home = () => {
     }, [displayedTitle, isDeleting, titleIndex, typingSpeed]);
 
     return (
-        // This section is transparent to allow the global background to show through.
         <section id="home" className="min-h-screen flex items-center justify-center bg-transparent">
             <div className="container mx-auto px-6 z-10">
                 <div className="flex flex-col md:flex-row items-center justify-between gap-12">
-                    <div className="md:w-1/2 text-center md:text-left animate-fade-in-right">
+                    
+                    {/* Left side: Text content with slide-in animation */}
+                    <motion.div 
+                        variants={slideIn("left", "tween", 0.2, 1)}
+                        className="md:w-1/2 text-center md:text-left"
+                    >
                         <h1 className="text-4xl md:text-6xl font-bold text-slate-900 dark:text-white leading-tight">
                             {t('home_greeting')}{' '}
                             <span 
-                                className="text-cyan-500 dark:text-cyan-400" 
+                                className="text-cyan-500 dark:text-cyan-300" 
                                 style={{textShadow: '0 0 8px #06b6d4, 0 0 16px #06b6d4'}}
                             >
                                 Suraj Kumar
@@ -69,9 +76,13 @@ const Home = () => {
                         >
                             {t('home_button')}
                         </a>
-                    </div>
+                    </motion.div>
                     
-                    <div className="md:w-1/2 flex justify-center animate-fade-in-left">
+                    {/* Right side: Profile picture with slide-in animation */}
+                    <motion.div 
+                        variants={slideIn("right", "tween", 0.2, 1)}
+                        className="md:w-1/2 flex justify-center"
+                    >
                         <div className="relative w-64 h-64 md:w-80 md:h-80 group">
                             <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-cyan-500 rounded-full blur opacity-60 group-hover:opacity-80 transition duration-1000 animate-pulse"></div>
                             <img 
@@ -81,11 +92,12 @@ const Home = () => {
                                 onError={(e) => { e.target.onerror = null; e.target.src='https://placehold.co/400x400/1a202c/718096?text=Suraj'; }}
                             />
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
             </div>
         </section>
     );
 };
 
-export default Home;
+// Wrap the component with the HOC before exporting it.
+export default SectionWrapper(Home, "home");

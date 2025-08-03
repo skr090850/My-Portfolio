@@ -1,5 +1,8 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { FiGithub } from 'react-icons/fi';
+import SectionWrapper from '../hoc/SectionWrapper';
+import { fadeIn } from '../utils/motion';
 
 const projectsData = [
     {
@@ -24,15 +27,18 @@ const projectsData = [
 
 const Projects = () => {
     return (
-        <section id="projects" className="py-20 bg-transparent">
+        <div className="py-20 bg-transparent">
             <div className="container mx-auto px-6">
-                <h2 className="text-4xl font-bold text-center text-white mb-12">
-                    My <span className="text-cyan-400">Projects</span>
-                </h2>
+                <motion.div variants={fadeIn("up", "tween", 0.2, 1)}>
+                    <h2 className="text-4xl font-bold text-center text-white mb-12">
+                        My <span className="text-cyan-400">Projects</span>
+                    </h2>
+                </motion.div>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {projectsData.map((project, index) => (
-                        <div 
+                        <motion.div 
                             key={index} 
+                            variants={fadeIn("up", "spring", index * 0.2, 0.75)}
                             className="bg-slate-800/40 backdrop-blur-sm rounded-lg p-6 flex flex-col border border-slate-700 hover:border-cyan-400/50 transition-all duration-300 shadow-lg hover:shadow-cyan-500/20 transform hover:-translate-y-2"
                         >
                             <h3 className="text-2xl font-bold text-cyan-400 mb-3">{project.title}</h3>
@@ -45,12 +51,12 @@ const Projects = () => {
                             <a href={project.link} target="_blank" rel="noopener noreferrer" className="mt-4 text-white hover:text-cyan-400 transition-colors self-start inline-flex items-center gap-2">
                                 View on GitHub <FiGithub />
                             </a>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
             </div>
-        </section>
+        </div>
     );
 };
 
-export default Projects;
+export default SectionWrapper(Projects, "projects");
