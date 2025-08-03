@@ -3,10 +3,10 @@ import { useSettings } from '../contexts/SettingsContext';
 
 // --- Dynamic Titles for the typing effect ---
 const dynamicTitles = [
-    "Full-Stack Developer",
-    "Flutter Developer",
-    "MERN Stack Specialist",
-    "AI Enthusiast"
+    "Full-Stack Developer . . .",
+    "Flutter Developer . . .",
+    "MERN Stack Specialist . . .",
+    "AI Enthusiast . . ."
 ];
 
 // --- Main Home Component ---
@@ -22,10 +22,10 @@ const Home = () => {
             const currentTitle = dynamicTitles[titleIndex];
             if (isDeleting) {
                 setDisplayedTitle(currentTitle.substring(0, displayedTitle.length - 1));
-                setTypingSpeed(100);
+                setTypingSpeed(50);
             } else {
                 setDisplayedTitle(currentTitle.substring(0, displayedTitle.length + 1));
-                setTypingSpeed(150);
+                setTypingSpeed(70);
             }
 
             if (!isDeleting && displayedTitle === currentTitle) {
@@ -56,7 +56,7 @@ const Home = () => {
                             </span>
                         </h1>
                         
-                        <p className="text-xl md:text-2xl text-slate-700 dark:text-slate-300 mt-4 h-8">
+                        <p className="text-xl md:text-3xl text-slate-700 dark:text-slate-50 mt-4 h-8 font-bold">
                             <span>{displayedTitle}</span>
                             <span className="border-l-2 border-slate-700 dark:border-slate-300 ml-1 animate-pulse"></span>
                         </p>
