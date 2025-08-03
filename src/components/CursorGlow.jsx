@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 const CursorGlow = () => {
   const numDots = 20;
-  const lagFactor = 0.15;
+  const lagFactor = 0.25;
 
-  const mousePosition = useRef({ x: -200, y: -200 });
+  const mousePosition = useRef({ x: -100, y: -100 });
   
   const [dots, setDots] = useState(
-    Array.from({ length: numDots }, () => ({ x: -200, y: -200 }))
+    Array.from({ length: numDots }, () => ({ x: -100, y: -100 }))
   );
 
   const handleMouseMove = useCallback((e) => {
