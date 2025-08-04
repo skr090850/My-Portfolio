@@ -180,7 +180,7 @@ const TimelineItem = ({ data }) => (
 
 const Experience = () => {
   return (
-    <div className="py-20 bg-transparent">
+    <div className="py-20 bg-transparent overflow-x-hidden">
       <div className="container mx-auto px-6">
         <motion.div variants={fadeIn("up", "tween", 0.2, 1)}>
           <h2 className="text-4xl font-bold text-center text-white mb-16">

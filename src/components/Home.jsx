@@ -44,7 +44,7 @@ const Home = () => {
     }, [displayedTitle, isDeleting, titleIndex, typingSpeed]);
 
     return (
-        <section id="home" className="min-h-screen flex items-center justify-center bg-transparent">
+        <section id="home" className="min-h-screen flex items-center justify-center bg-transparent overflow-x-hidden">
             <div className="container mx-auto px-6 z-10">
                 <div className="flex flex-col md:flex-row items-center justify-between gap-12">
                     
