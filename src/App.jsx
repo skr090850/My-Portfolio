@@ -1,4 +1,5 @@
 import React from 'react';
+import { Toaster } from 'react-hot-toast';
 import { SettingsProvider } from './contexts/SettingsContext';
 import StarsCanvas from './components/Stars';
 import CursorGlow from './components/CursorGlow';
@@ -12,7 +13,7 @@ import Contact from './components/Contact';
 import Chatbot from './components/Chatbot';
 
 const Footer = () => (
-    <footer className="bg-white/5 dark:bg-slate-900/5 py-6 border-t border-slate-200/10 dark:border-slate-800/10 transition-colors duration-300">
+    <footer className="bg-white dark:bg-slate-900 py-6 border-t border-slate-200 dark:border-slate-800 transition-colors duration-300">
         <div className="container mx-auto px-6 text-center text-slate-500 dark:text-slate-400">
             <p>&copy; {new Date().getFullYear()} Suraj Kumar. All Rights Reserved.</p>
         </div>
@@ -22,10 +23,13 @@ const Footer = () => (
 function App() {
   return (
     <SettingsProvider>
-      <div className="relative">
+      <div className="relative min-h-screen bg-white dark:bg-slate-900 text-slate-800 dark:text-white font-sans transition-colors duration-300">
+        <Toaster position="top-center" reverseOrder={false} />
+        
         <StarsCanvas />
         <CursorGlow />
-        <div className="relative z-0"> {/* Use z-0 or no z-index for content */}
+        
+        <div className="relative z-10">
             <Header />
             <main>
               <Home />
@@ -37,6 +41,7 @@ function App() {
             </main>
             <Footer />
         </div>
+        
         <Chatbot />
       </div>
     </SettingsProvider>
