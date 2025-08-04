@@ -1,53 +1,63 @@
-# Suraj Kumar - Portfolio (React + Vite)
+# 🌐 Suraj Kumar - Interactive AI Portfolio
 
-This is the repository for my personal portfolio website, built using React and Vite. This project provides a fast, modern development experience with Hot Module Replacement (HMR) and is styled using Tailwind CSS.
+Welcome to the source code for my **personal portfolio website** — a fully responsive, interactive, and AI-powered single-page application designed to highlight my work, projects, and professional journey in a dynamic and engaging way.
 
-## Tech Stack & Key Libraries
+🔗 **[Live Demo](https://my-portfolio-tle4.vercel.app/)** &nbsp;&nbsp;&nbsp;  
+📁 **Clone or Fork** to explore, contribute, or create your own version!
 
-This project is built with a modern frontend stack:
+---
 
--   **Framework:** [React.js](https://reactjs.org/)
--   **Build Tool:** [Vite](https://vitejs.dev/)
--   **Styling:** [Tailwind CSS](https://tailwindcss.com/)
--   **Icons:** [React Icons](https://react-icons.github.io/react-icons/)
+## 🚀 Features
 
-This setup uses Vite's official React plugin, which leverages Babel for Fast Refresh during development.
+- **💻 Fully Responsive Design**  
+  Optimized for all devices — mobile, tablet, and desktop — with fluid layouts and intuitive UX.
 
-## Local Development
+- **🤖 AI Assistant (Google Gemini Powered)**  
+  An integrated chatbot that answers queries about my resume, projects, and background.
 
-To run this project on your local machine, follow these steps.
+- **🌗 Multi-Theme Support**  
+  Users can switch between Light, Dark, or System theme modes.
 
-**1. Clone the repository:**
+- **🌐 Multi-Language Support**  
+  Content available in English, Hindi, Bengali, and more — powered by a dynamic translation system.
 
-```sh
-git clone [https://github.com/your-username/your-repo-name.git](https://github.com/your-username/your-repo-name.git)
-cd your-repo-name
-```
+- **🎞️ Fluid Animations with Framer Motion**  
+  Smooth scroll-based and hover animations bring life to each interaction.
 
-**2. Install dependencies:**
+- **🌀 Interactive 3D Hover Effects**  
+  Cards with 3D tilt effects that react to cursor movement for added engagement.
 
-This project uses `npm` for package management.
+- **🌌 Animated Starfield Background**  
+  A mesmerizing animated backdrop created with React Three Fiber & Drei.
 
-```sh
-npm install
-```
+- **📬 Functional Contact Form**  
+  Easily reach out to me via EmailJS, complete with toast alerts for success/failure.
 
-**3. Run the development server:**
+---
 
-This command will start the Vite development server with HMR enabled.
+## 🛠️ Tech Stack
 
-```sh
-npm run dev
-```
+| Category         | Tools & Libraries                          |
+|------------------|--------------------------------------------|
+| **Frontend**     | React.js, Vite                             |
+| **Styling**      | Tailwind CSS                               |
+| **Animations**   | Framer Motion                              |
+| **3D Graphics**  | React Three Fiber, Drei                    |
+| **Email Service**| EmailJS                                    |
+| **AI Assistant** | Google Gemini API                          |
+| **Icons**        | React Icons                                |
 
-The application will be available at `http://localhost:5173`.
+---
 
-## Building for Production
+## 📂 Project Structure
 
-To create an optimized production build, run the following command:
-
-```sh
-npm run build
-```
-
-This will create a `dist` directory with the static assets, which can then be deployed to any static hosting service.
+```bash
+src/
+├── assets/             # Images, logos, icons
+├── components/         # Reusable UI components
+├── pages/              # Main sections (Home, About, Projects, Contact, etc.)
+├── hooks/              # Custom React hooks
+├── utils/              # Helper functions and constants
+├── App.jsx             # Root component
+├── main.jsx            # Entry point
+└── index.css           # Tailwind & global styles
