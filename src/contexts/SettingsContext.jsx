@@ -7,7 +7,7 @@ export const SettingsProvider = ({ children }) => {
   const [theme, setThemeState] = useState(() => {
     // On initial load, get the theme from localStorage or default to 'system'
     if (typeof window !== 'undefined') {
-      return localStorage.getItem('theme') || 'system';
+      return localStorage.getItem('theme') || 'dark';
     }
     return 'system';
   });
