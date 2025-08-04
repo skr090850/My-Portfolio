@@ -33,9 +33,9 @@ const Contact = () => {
         e.preventDefault();
         setLoading(true);
 
-        const serviceID = 'service_xb1ppd9';
-        const templateID = 'template_t37m83n';
-        const publicKey = 'B7l_CdREPMRMBv3lQ';
+        const serviceID = import.meta.env.VITE_SERVICE_ID;
+        const templateID = import.meta.env.VITE_TEMPLATE_ID;
+        const publicKey = import.meta.env.VITE_PUBLIC_KEY;
 
         emailjs.send(serviceID, templateID, 
             {

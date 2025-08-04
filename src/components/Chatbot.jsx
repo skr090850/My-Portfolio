@@ -1,16 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FiSend, FiX, FiMessageSquare } from 'react-icons/fi';
-
-// Gemini Logo SVG component
-const GeminiLogo = () => (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M4.74,15.22A10.5,10.5,0,0,1,12,1.5a10.49,10.49,0,0,1,7.26,13.72" fill="#4285f4"></path>
-        <path d="M1.5,12A10.5,10.5,0,0,0,12,22.5,10.5,10.5,0,0,0,22.5,12" fill="#34a853"></path>
-        <path d="M12,22.5A10.5,10.5,0,0,1,1.5,12a10.49,10.49,0,0,1,3.24-7.26" fill="#fbbc05"></path>
-        <path d="M22.5,12A10.5,10.5,0,0,0,12,1.5,10.5,10.5,0,0,0,1.5,12" fill="#ea4335"></path>
-    </svg>
-);
-
+import { FaRobot } from 'react-icons/fa'; // Robot icon ko import kiya gaya
 
 const Chatbot = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -20,27 +10,27 @@ const Chatbot = () => {
     const chatEndRef = useRef(null);
     const chatHistoryRef = useRef([]);
 
-    // Function to automatically scroll to the latest message
     const scrollToBottom = () => {
         chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
     };
 
     useEffect(scrollToBottom, [messages]);
 
-    // Set the initial greeting message when the chat opens
     useEffect(() => {
         if (isOpen && messages.length === 0) {
             setMessages([{ text: "Hello! I'm Suraj's AI assistant, powered by Google Gemini. Ask me anything about his portfolio!", sender: 'bot' }]);
         }
     }, [isOpen]);
 
-    // This is the context we send to Gemini API. It contains all info from the resume.
     const getSystemPrompt = () => {
         return `
             You are a helpful and friendly AI assistant for Suraj Kumar's personal portfolio.
             Your goal is to answer questions about Suraj based on the information provided below.
-            Be conversational and provide clear, concise answers.
-            If a question is asked that is not related to Suraj, politely decline to answer.
+            
+            **IMPORTANT RULES:**
+            - Be conversational, but give answers TO THE POINT.
+            - DO NOT use any special formatting characters like asterisks (*) for bolding or lists. Provide plain text answers.
+            - If a question is asked that is not related to Suraj, politely decline to answer.
 
             **About Suraj Kumar:**
             - **Who is he?** Suraj Kumar is a passionate and driven Full-Stack Developer with expertise in the MERN stack and a strong interest in mobile development with Flutter. He is currently seeking challenging software development roles.
@@ -82,7 +72,6 @@ const Chatbot = () => {
         setInput('');
         setIsLoading(true);
 
-        // Update chat history for the API call
         chatHistoryRef.current.push({ role: "user", parts: [{ text: input }] });
 
         const prompt = getSystemPrompt() + "\n\nHere is the conversation history:\n" + chatHistoryRef.current.map(m => `${m.role}: ${m.parts[0].text}`).join('\n') + `\n\nNow, answer the last user question: "${input}"`;
@@ -91,7 +80,7 @@ const Chatbot = () => {
             const payload = {
                 contents: [{ role: "user", parts: [{ text: prompt }] }],
             };
-            const apiKey = ""; // API key is handled by the environment
+            const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
 
             const response = await fetch(apiUrl, {
@@ -132,10 +121,12 @@ const Chatbot = () => {
                 </button>
             </div>
 
-            <div className={`fixed bottom-24 right-8 z-40 w-80 md:w-96 h-[500px] bg-slate-800/80 backdrop-blur-md border border-cyan-400/30 rounded-lg shadow-2xl shadow-cyan-500/20 flex flex-col transition-all duration-500 ease-in-out ${isOpen ? 'transform-none opacity-100 pointer-events-auto' : 'transform-translate-y-16 opacity-0 pointer-events-none'}`}>
+            {/* FIX: Chatbot window ki width aur height ab responsive hai */}
+            <div className={`fixed bottom-24 right-4 sm:right-8 z-40 w-[calc(100vw-2rem)] sm:w-96 lg:w-[450px] h-[70vh] sm:h-[500px] bg-slate-800/80 backdrop-blur-md border border-cyan-400/30 rounded-lg shadow-2xl shadow-cyan-500/20 flex flex-col transition-all duration-500 ease-in-out ${isOpen ? 'transform-none opacity-100 pointer-events-auto' : 'transform-translate-y-16 opacity-0 pointer-events-none'}`}>
+                {/* FIX: Heading aur logo update kiya gaya */}
                 <div className="p-4 border-b border-cyan-400/30 text-white font-bold text-center flex items-center justify-center gap-2">
-                    <GeminiLogo />
-                    AI Assistant
+                    <FaRobot />
+                    Suraj AI Assistant
                 </div>
                 <div className="flex-1 p-4 overflow-y-auto">
                     {messages.map((msg, index) => (
