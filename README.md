@@ -48,16 +48,3 @@ Welcome to the source code for my **personal portfolio website** — a fully res
 | **Icons**        | React Icons                                |
 
 ---
-
-## 📂 Project Structure
-
-```bash
-src/
-├── assets/             # Images, logos, icons
-├── components/         # Reusable UI components
-├── pages/              # Main sections (Home, About, Projects, Contact, etc.)
-├── hooks/              # Custom React hooks
-├── utils/              # Helper functions and constants
-├── App.jsx             # Root component
-├── main.jsx            # Entry point
-└── index.css           # Tailwind & global styles
