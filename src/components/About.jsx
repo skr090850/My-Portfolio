@@ -8,7 +8,6 @@ import SectionWrapper from '../hoc/SectionWrapper';
 import withTilt from '../hoc/withTilt';
 import { fadeIn } from '../utils/motion';
 
-// Data for the new service cards
 const services = [
     {
         title: "Full-Stack Developer",
@@ -28,24 +27,20 @@ const services = [
     },
 ];
 
-// This component now receives isHovering and mousePosition from the HOC
 const ServiceCardUI = ({ service, isHovering, mousePosition }) => {
     return (
-        // The main container is relative to position the shadow behind it
         <div className="relative h-full">
-            {/* NEW: This div creates the lighting effect as a blurred shadow */}
             <div
                 className="absolute -inset-2 rounded-2xl transition-opacity duration-300"
                 style={{
                     opacity: isHovering ? 1 : 0,
                     background: `radial-gradient(300px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(45, 212, 191, 0.2), transparent 80%)`,
-                    filter: 'blur(15px)', // Blurs the gradient to create a soft glow
+                    filter: 'blur(15px)', 
                 }}
             />
-            {/* The card content is in a separate relative container to appear above the shadow */}
             <div 
                 className="relative w-full bg-slate-800/40 backdrop-blur-sm p-6 rounded-2xl flex flex-col items-center justify-center gap-4 text-center text-white border border-slate-700 h-full"
-                style={{ transform: "translateZ(50px)" }} // Adds depth to the card content
+                style={{ transform: "translateZ(50px)" }} 
             >
                 <div className="text-cyan-400">{service.icon}</div>
                 <h3 className="text-xl font-semibold">{service.title}</h3>
@@ -54,7 +49,6 @@ const ServiceCardUI = ({ service, isHovering, mousePosition }) => {
     );
 };
 
-// Wrap the simple card with the tilt HOC
 const TiltedServiceCard = withTilt(ServiceCardUI);
 
 const About = () => {
@@ -74,7 +68,6 @@ const About = () => {
                     </p>
                 </motion.div>
 
-                {/* Grid for the new service cards */}
                 <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8" style={{ perspective: '1000px' }}>
                     {services.map((service, index) => (
                         <motion.div key={service.title} variants={fadeIn("up", "spring", index * 0.2, 0.75)}>
@@ -83,7 +76,6 @@ const About = () => {
                     ))}
                 </div>
 
-                {/* Download Resume Button */}
                 <div className="text-center mt-16">
                     <a 
                         href={resumeUrl} 

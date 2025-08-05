@@ -1,4 +1,3 @@
-// This file contains reusable animation variants for Framer Motion.
 
 export const slideIn = (direction, type, delay, duration) => {
   return {

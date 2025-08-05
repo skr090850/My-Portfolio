@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FiSend, FiX, FiMessageSquare } from 'react-icons/fi';
-import { FaRobot } from 'react-icons/fa'; // Robot icon ko import kiya gaya
+import { FaRobot } from 'react-icons/fa';
 
 const Chatbot = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -121,9 +121,7 @@ const Chatbot = () => {
                 </button>
             </div>
 
-            {/* FIX: Chatbot window ki width aur height ab responsive hai */}
             <div className={`fixed bottom-24 right-4 sm:right-8 z-40 w-[calc(100vw-2rem)] sm:w-96 lg:w-[450px] h-[70vh] sm:h-[500px] bg-slate-800/80 backdrop-blur-md border border-cyan-400/30 rounded-lg shadow-2xl shadow-cyan-500/20 flex flex-col transition-all duration-500 ease-in-out ${isOpen ? 'transform-none opacity-100 pointer-events-auto' : 'transform-translate-y-16 opacity-0 pointer-events-none'}`}>
-                {/* FIX: Heading aur logo update kiya gaya */}
                 <div className="p-4 border-b border-cyan-400/30 text-white font-bold text-center flex items-center justify-center gap-2">
                     <FaRobot />
                     Suraj AI Assistant

@@ -40,22 +40,18 @@ const projectsData = [
     }
 ];
 
-// Yeh component ab HOC se isHovering aur mousePosition props leta hai
 const ProjectCardUI = ({ project, isHovering, mousePosition }) => {
     return (
-        // Card ke main container ko 'relative' banaya gaya hai taaki shadow uske peeche aa sake
         <div className="relative h-full">
-            {/* NEW: Yeh div ab lighting effect ko card ke peeche ek shadow ki tarah dikhata hai */}
             <div
                 className="absolute -inset-2 rounded-2xl transition-opacity duration-300"
                 style={{
                     opacity: isHovering ? 1 : 0,
                     background: `radial-gradient(400px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(45, 212, 191, 0.25), transparent 80%)`,
-                    filter: 'blur(20px)', // Shadow ko soft banane ke liye blur effect
+                    filter: 'blur(20px)',
                 }}
             />
 
-            {/* Card ka content ab ek alag 'relative' container mein hai taaki woh shadow ke upar rahe */}
             <div 
                 className="bg-slate-800/60 backdrop-blur-sm rounded-2xl p-5 flex flex-col border border-slate-700 h-full overflow-hidden relative"
                 style={{ transform: "translateZ(40px)" }}
@@ -74,7 +70,6 @@ const ProjectCardUI = ({ project, isHovering, mousePosition }) => {
                     </div>
                 </div>
                 
-                {/* FIX: Content ab hamesha visible hai, hover par animate nahi hota */}
                 <div className="flex flex-col flex-grow">
                     <h3 className="text-2xl font-bold text-cyan-400 mb-2">{project.title}</h3>
                     <p className="text-slate-400 flex-grow text-sm">{project.description}</p>
@@ -89,7 +84,6 @@ const ProjectCardUI = ({ project, isHovering, mousePosition }) => {
     );
 };
 
-// Card UI ko tilt HOC se wrap kiya gaya hai
 const TiltedProjectCard = withTilt(ProjectCardUI);
 
 const Projects = () => {

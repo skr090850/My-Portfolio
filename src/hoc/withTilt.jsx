@@ -1,7 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 
-// This HOC now tracks hover state and mouse position
 const withTilt = (Component) => {
   return (props) => {
     const ref = useRef(null);
@@ -19,7 +18,7 @@ const withTilt = (Component) => {
       const rotateY = (x / rect.width - 0.5) * 25;
       
       setRotate({ x: rotateX, y: rotateY });
-      setMousePosition({ x, y }); // Update mouse position relative to the card
+      setMousePosition({ x, y });
     };
 
     const handleMouseEnter = () => setIsHovering(true);
@@ -42,7 +41,6 @@ const withTilt = (Component) => {
         }}
         transition={{ type: "spring", stiffness: 300, damping: 20 }}
       >
-        {/* Pass down the new props to the wrapped component */}
         <Component {...props} isHovering={isHovering} mousePosition={mousePosition} />
       </motion.div>
     );

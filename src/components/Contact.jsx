@@ -1,12 +1,11 @@
 import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import emailjs from '@emailjs/browser';
-import toast from 'react-hot-toast'; // toast ko import karein
+import toast from 'react-hot-toast';
 import SectionWrapper from '../hoc/SectionWrapper';
 import { slideIn, fadeIn } from '../utils/motion';
 import { FaGithub, FaLinkedin, FaInstagram, FaTwitter, FaFacebook } from 'react-icons/fa';
 
-// Social media links ka data
 const socialLinks = [
     { name: 'GitHub', icon: <FaGithub size={32} />, url: 'https://github.com/skr090850' },
     { name: 'LinkedIn', icon: <FaLinkedin size={32} />, url: 'https://linkedin.com/in/-suraj-kumar-' },
@@ -49,13 +48,11 @@ const Contact = () => {
         )
         .then(() => {
             setLoading(false);
-            // FIX: alert() ki jagah toast.success() ka istemal
             toast.success('Thank you! I will get back to you soon.');
             setForm({ name: '', email: '', message: '' });
         }, (error) => {
             setLoading(false);
             console.error(error);
-            // FIX: alert() ki jagah toast.error() ka istemal
             toast.error('Ahh, something went wrong. Please try again.');
         });
     };
@@ -63,7 +60,6 @@ const Contact = () => {
     return (
         <div className="py-20 bg-transparent">
             <div className="container mx-auto px-6">
-                {/* Contact Form Card */}
                 <motion.div 
                     variants={slideIn("left", "tween", 0.2, 1)}
                     className="bg-slate-800/40 backdrop-blur-sm p-8 rounded-2xl border border-slate-700/50 max-w-3xl mx-auto"
@@ -122,7 +118,6 @@ const Contact = () => {
                     </form>
                 </motion.div>
 
-                {/* Social Media Icons Section - Moved here */}
                 <motion.div 
                     variants={fadeIn("up", "tween", 0.3, 1)}
                     className="flex justify-center items-center gap-6 mt-16"

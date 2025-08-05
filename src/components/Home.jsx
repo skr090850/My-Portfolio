@@ -48,7 +48,6 @@ const Home = () => {
             <div className="container mx-auto px-6 z-10">
                 <div className="flex flex-col md:flex-row items-center justify-between gap-12">
                     
-                    {/* Left side: Text content with slide-in animation */}
                     <motion.div 
                         variants={slideIn("left", "tween", 0.2, 1)}
                         className="md:w-1/2 text-center md:text-left"
@@ -78,7 +77,6 @@ const Home = () => {
                         </a>
                     </motion.div>
                     
-                    {/* Right side: Profile picture with slide-in animation */}
                     <motion.div 
                         variants={slideIn("right", "tween", 0.2, 1)}
                         className="md:w-1/2 flex justify-center"
@@ -99,5 +97,4 @@ const Home = () => {
     );
 };
 
-// Wrap the component with the HOC before exporting it.
 export default SectionWrapper(Home, "home");

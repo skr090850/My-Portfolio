@@ -32,7 +32,6 @@ const Header = () => {
     ];
 
     return (
-        // FIX: The scrolled state now applies a semi-transparent backdrop.
         <header className={`fixed top-0 left-0 w-full z-30 transition-all duration-300 ${isScrolled ? 'bg-white/10 dark:bg-slate-900/10 backdrop-blur-sm' : 'bg-transparent'}`}>
             <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
                 <a href="#home" className="text-2xl font-bold text-cyan-500 dark:text-cyan-400">

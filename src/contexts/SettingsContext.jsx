@@ -5,7 +5,6 @@ const SettingsContext = createContext();
 
 export const SettingsProvider = ({ children }) => {
   const [theme, setThemeState] = useState(() => {
-    // On initial load, get the theme from localStorage or default to 'system'
     if (typeof window !== 'undefined') {
       return localStorage.getItem('theme') || 'dark';
     }
@@ -17,7 +16,6 @@ export const SettingsProvider = ({ children }) => {
   useEffect(() => {
     const root = window.document.documentElement;
     
-    // This function applies the correct class ('dark' or 'light') to the <html> tag
     const applyTheme = (currentTheme) => {
         const isDark =
             currentTheme === 'dark' ||
@@ -29,13 +27,10 @@ export const SettingsProvider = ({ children }) => {
 
     applyTheme(theme);
 
-    // NEW: This listens for changes in your OS theme (e.g., Windows switching to dark mode at night)
-    // and updates the website theme automatically if 'system' is selected.
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     const handleChange = () => applyTheme(theme);
     mediaQuery.addEventListener('change', handleChange);
 
-    // Cleanup function to remove the listener
     return () => mediaQuery.removeEventListener('change', handleChange);
     
   }, [theme]);

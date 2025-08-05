@@ -24,7 +24,6 @@ const Footer = () => (
 function App() {
   return (
     <SettingsProvider>
-      {/* FIX: Light/dark mode ke liye base background aur text color set kiya gaya */}
       <div className="relative min-h-screen bg-white dark:bg-slate-900 text-slate-800 dark:text-white font-sans transition-colors duration-300">
         <Toaster position="top-center" reverseOrder={false} />
         <StarsCanvas />

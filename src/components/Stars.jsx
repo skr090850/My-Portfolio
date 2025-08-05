@@ -29,8 +29,6 @@ const Stars = (props) => {
 
 const StarsCanvas = () => {
   return (
-    // FIX: Removed z-[-1]. This ensures the canvas renders inside its parent,
-    // not behind it. DOM order will now correctly place it behind the content.
     <div className='w-full h-full absolute inset-0'>
       <Canvas camera={{ position: [0, 0, 1] }}>
         <Suspense fallback={null}>
