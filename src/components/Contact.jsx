@@ -4,14 +4,16 @@ import emailjs from '@emailjs/browser';
 import toast from 'react-hot-toast';
 import SectionWrapper from '../hoc/SectionWrapper';
 import { slideIn, fadeIn } from '../utils/motion';
-import { FaGithub, FaLinkedin, FaInstagram, FaTwitter, FaFacebook } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaInstagram, FaTwitter,} from 'react-icons/fa';
+import { BiMailSend } from 'react-icons/bi';
+import { MdEmail } from 'react-icons/md';
 
 const socialLinks = [
+    {name : 'Gmail', icon: <MdEmail size={32} />, url: 'mailto:skr090850@gmail.com'},
     { name: 'GitHub', icon: <FaGithub size={32} />, url: 'https://github.com/skr090850' },
     { name: 'LinkedIn', icon: <FaLinkedin size={32} />, url: 'https://linkedin.com/in/-suraj-kumar-' },
-    { name: 'Instagram', icon: <FaInstagram size={32} />, url: 'https://www.instagram.com/' },
-    { name: 'Twitter', icon: <FaTwitter size={32} />, url: 'https://twitter.com/' },
-    { name: 'Facebook', icon: <FaFacebook size={32} />, url: 'https://www.facebook.com/' },
+    { name: 'Instagram', icon: <FaInstagram size={32} />, url: 'https://www.instagram.com/suraj_._kumar/' },
+    { name: 'Twitter', icon: <FaTwitter size={32} />, url: 'https://x.com/_suraj_kr_?t=8NN14XeRrmaNyd_VeSNOow&s=09' },
 ];
 
 const Contact = () => {
